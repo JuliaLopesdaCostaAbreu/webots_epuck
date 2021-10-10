@@ -52,13 +52,7 @@ void salvar_posicao_distancias(FILE *log, const double * p, const double * r, fl
     fflush(log);
 }
 
-
-int main(int argc, char **argv) {
-  FILE *log = fopen("log.csv", "w");
-  if (!log)
-    exit(1);
-    
-  rb_speed robot_speed () {
+rb_speed robot_speed () {
     
     rb_speed sp;
     
@@ -87,7 +81,12 @@ int main(int argc, char **argv) {
  
     return sp;
   }
-  
+
+int main(int argc, char **argv) {
+  FILE *log = fopen("log.csv", "w");
+  if (!log)
+    exit(1);
+    
   rb_speed inter = robot_speed ();
   
   while (wb_robot_step(TIME_STEP) != -1) {
